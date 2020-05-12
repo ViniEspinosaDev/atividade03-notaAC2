@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon May 11 22:53:02 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-0695-d421-00001086e660 
+on database directory C:\Users\vinie\Documents\Arquivos\Vinicius\Estudo\Faculdade\5º Semestre\Programação Orientada a Objetos 2\Atividade03-notaAC2\atividade03-nota-ac2\dbvini with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/Users/vinie/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_60-b27
+user.dir=c:\Users\vinie\Documents\Arquivos\Vinicius\Estudo\Faculdade\5º Semestre\Programação Orientada a Objetos 2\Atividade03-notaAC2\atividade03-nota-ac2
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
