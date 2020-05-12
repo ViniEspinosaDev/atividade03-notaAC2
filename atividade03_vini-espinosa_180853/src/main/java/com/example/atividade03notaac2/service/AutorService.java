@@ -21,4 +21,9 @@ public class AutorService {
     public void salvar(Autor autor) {
         autorRepository.save(autor);
     }
+
+    public Autor getAutorById(int id) {
+        return autorRepository.findById(id).get();
+    }
+
 }

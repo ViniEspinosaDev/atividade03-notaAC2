@@ -21,4 +21,8 @@ public class EditoraService {
     public void salvar(Editora editora) {
         editoraRepository.save(editora);
     }
+
+    public Editora getEditoraById(int id) {
+        return editoraRepository.findById(id).get();
+    }
 }
