@@ -44,27 +44,16 @@
     </table>
     <br>
 
-    <form th:action="@{/salvarLivroAutor}" method="POST">
-
+    <form th:action="@{/associarLivroAutor(idAutor=${autor.idAutor})}" method="POST">
         <label>Adicionar livro:</label>
-
-        <select th:field="${autor.livros}" required> 
-            <option value="">Novo autor</option>
+        <select name="idLivro" required> 
+            <option value="">Novo Livro</option>
             <option th:each="livro : ${livros}"
                         th:value="${livro.idLivro}"
                         th:text="${livro.nome}">
             </option>
         </select>
-
-
-        <input type="submit" value="Salvar" />
-
+        <input type="submit" value="Associar livro" />
     </form>
-
-
-
-
-
-
 </body>
 </html>

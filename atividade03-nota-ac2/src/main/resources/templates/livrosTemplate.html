@@ -29,8 +29,8 @@
 
         <label>Editora:</label>
 
-        <select th:field="${livro.editora}">
-            <option value="">(Opcional)</option>
+        <select th:field="${livro.editora}" required>
+            <option value="">(Editora)</option>
             <option th:each="editora : ${editoras}"
                         th:value="${editora.idEditora}"
                         th:text="${editora.nome}">

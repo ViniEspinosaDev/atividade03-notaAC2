@@ -1,5 +1,8 @@
 package com.example.atividade03notaac2.controller;
 
+import java.util.List;
+
+import com.example.atividade03notaac2.entity.Autor;
 import com.example.atividade03notaac2.entity.Livro;
 import com.example.atividade03notaac2.service.AutorService;
 import com.example.atividade03notaac2.service.EditoraService;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -36,18 +40,6 @@ public class LivroController {
         return mv;
     }
 
-    @GetMapping("/detalhesLivro/{id}")
-    public ModelAndView getLivroDetalhes(@PathVariable(name = "id") Integer id) {
-
-        Livro livro = livroService.getLivroById(id);
-        ModelAndView mv = new ModelAndView("detalhesLivro");
-
-        mv.addObject("autores", autorService.getAutores());
-        mv.addObject("livro", livro);
-
-        return mv;
-    }
-    
     @PostMapping("/salvarLivro")
     public String salvar(@ModelAttribute Livro livro) {
 
@@ -56,12 +48,34 @@ public class LivroController {
         return "redirect:/livros";
     }
 
-    @PostMapping("/salvarAutorLivro")
-    public String salvarAutorLivro(@ModelAttribute Livro livro) {
+    @PostMapping("/associarAutorLivro")
+    public String associarAutor(@ModelAttribute Autor autor, @RequestParam Integer idLivro) {
+        
 
-        //livroService.salvar(livro);
+        Livro livro = livroService.getLivroById(idLivro);
+        autor = autorService.getAutorById(autor.getIdAutor());
+        
 
-        return "redirect:/livros";
+        livro.getAutores().add(autor);
+        livroService.salvar(livro);
+
+        return "redirect:/detalhesLivros/" + idLivro.toString();
+    }
+
+    @GetMapping("/detalhesLivro/{idLivro}")
+    public ModelAndView getLivroDetalhes(@PathVariable(name = "idLivro") Integer idLivro) {
+
+        Livro livro = livroService.getLivroById(idLivro);
+        ModelAndView mv = new ModelAndView("detalhesLivro");
+
+        mv.addObject("livro", livro);
+
+        List <Autor> autoresNaoAssociados = autorService.getAutores();
+        autoresNaoAssociados.removeAll(livro.getAutores());
+
+        mv.addObject("autores", autoresNaoAssociados);
+
+        return mv;
     }
 
 }

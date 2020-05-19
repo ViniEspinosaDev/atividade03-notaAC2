@@ -25,7 +25,7 @@
     <br><b>Genero: </b> <span th:text="${livro.genero}"></span>
     <br><b>Preco: </b> <span th:text="${livro.preco}"></span>
     <br><b>Ano: </b> <span th:text="${livro.ano}"></span>
-    <br><b>Editora: </b> <span th:text="${livro.editora.nome}"></span>
+    <br><b>Editora: </b> <span th:text="${livro.editora?.nome}"></span>
     <br>
     <br>
 
@@ -47,21 +47,16 @@
     </table>
     <br>
 
-    <form th:action="@{/salvarAutorLivro}" method="POST">
-
-        <label>Adicionar autor:</label>
-
-        <select th:field="${livro.autores}" required> 
-            <option value="">Novo autor</option>
+    <form th:action="@{/associarAutorLivro(idLivro=${livro.idLivro})}" method="POST">
+        <label>Adicionar Autor:</label>
+        <select name="idAutor" required> 
+            <option value="">Novo Autor</option>
             <option th:each="autor : ${autores}"
                         th:value="${autor.idAutor}"
                         th:text="${autor.nome}">
             </option>
         </select>
-
-
-        <input type="submit" value="Salvar" />
-
+        <input type="submit" value="Associar Autor" />
     </form>
     
 </body>
