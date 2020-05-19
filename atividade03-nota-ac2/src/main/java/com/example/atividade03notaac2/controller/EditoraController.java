@@ -2,7 +2,6 @@ package com.example.atividade03notaac2.controller;
 
 import com.example.atividade03notaac2.entity.Editora;
 import com.example.atividade03notaac2.service.EditoraService;
-import com.example.atividade03notaac2.service.LivroService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

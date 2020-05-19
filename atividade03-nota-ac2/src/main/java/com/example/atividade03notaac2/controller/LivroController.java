@@ -19,11 +19,18 @@ public class LivroController {
     @Autowired
     private LivroService livroService;
 
+    @Autowired
+    private EditoraService editoraService;
+
+    @Autowired
+    private AutorService autorService;
+
     @GetMapping("/livros")
     public ModelAndView getLivros() {
         ModelAndView mv = new ModelAndView("livrosTemplate");
 
         mv.addObject("livro", new Livro());
+        mv.addObject("editoras", editoraService.getEditoras());
         mv.addObject("livros", livroService.getLivros());
 
         return mv;
@@ -35,17 +42,26 @@ public class LivroController {
         Livro livro = livroService.getLivroById(id);
         ModelAndView mv = new ModelAndView("detalhesLivro");
 
+        mv.addObject("autores", autorService.getAutores());
         mv.addObject("livro", livro);
 
         return mv;
     }
-
+    
     @PostMapping("/salvarLivro")
     public String salvar(@ModelAttribute Livro livro) {
 
         livroService.salvar(livro);
 
-        return "redirect:/livro";
+        return "redirect:/livros";
+    }
+
+    @PostMapping("/salvarAutorLivro")
+    public String salvarAutorLivro(@ModelAttribute Livro livro) {
+
+        livroService.salvar(livro);
+
+        return "redirect:/livros";
     }
 
 }
