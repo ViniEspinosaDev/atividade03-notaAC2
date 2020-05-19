@@ -32,7 +32,6 @@ public class LivroController {
     @GetMapping("/livros")
     public ModelAndView getLivros() {
         ModelAndView mv = new ModelAndView("livrosTemplate");
-
         mv.addObject("livro", new Livro());
         mv.addObject("editoras", editoraService.getEditoras());
         mv.addObject("livros", livroService.getLivros());
