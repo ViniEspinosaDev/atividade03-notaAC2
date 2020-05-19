@@ -59,7 +59,7 @@ public class LivroController {
         livro.getAutores().add(autor);
         livroService.salvar(livro);
 
-        return "redirect:/detalhesLivros/" + idLivro.toString();
+        return "redirect:/detalhesLivro/" + idLivro.toString();
     }
 
     @GetMapping("/detalhesLivro/{idLivro}")
