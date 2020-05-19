@@ -23,7 +23,7 @@ public class Editora implements Serializable {
 
     private String nome;
     private String origem;
-    private String inauguracao;
+    private int anoInauguracao;
     private String endereco;
 
     @OneToMany
@@ -48,12 +48,12 @@ public class Editora implements Serializable {
         this.origem = origem;
     }
 
-    public String getInauguracao() {
-        return inauguracao;
+    public int getAnoInauguracao() {
+        return anoInauguracao;
     }
 
-    public void setInauguracao(String inauguracao) {
-        this.inauguracao = inauguracao;
+    public void setAnoInauguracao(int anoInauguracao) {
+        this.anoInauguracao = anoInauguracao;
     }
 
     public String getEndereco() {
@@ -77,7 +77,7 @@ public class Editora implements Serializable {
     // #region Override
     @Override
     public String toString() {
-        return "Editora [endereco=" + endereco + ", idEditora=" + idEditora + ", inauguracao=" + inauguracao
+        return "Editora [endereco=" + endereco + ", idEditora=" + idEditora + ", anoInauguracao=" + anoInauguracao
                 + ", livros=" + livros + ", nome=" + nome + ", origem=" + origem + "]";
     }
     // #endregion

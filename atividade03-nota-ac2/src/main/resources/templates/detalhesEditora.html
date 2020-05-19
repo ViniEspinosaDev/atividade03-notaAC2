@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da editora</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalhes da editora</h1>
+    <a href="/">Menu</a>
+    <a href="/editoras">Editoras</a>
+    <br>
+    <br>
+    <b>Autor: </b> <span th:text="${editora.idEditora}"></span>
+    <br><b>Nome: </b> <span th:text="${editora.nome}"></span>
+    <br><b>origem: </b> <span th:text="${editora.origem}"></span>
+    <br><b>Ano Inauguração: </b> <span th:text="${editora.anoInauguracao}"></span>
+    <br><b>Endereço: </b> <span th:text="${editora.endereco}"></span>
+    <br>
+    <br>
+
+    Livros:
+    <table>
+        <tr>
+            <th>Livro</th>
+            <th>Nome</th>
+            <th>Genero</th>
+            <th>Detalhes</th>
+        </tr>
+
+        <tr th:each="livro : ${editora.livros}">
+            <td th:text="${livro.idLivro}"></td>
+            <td th:text="${livro.nome}"></td>
+            <td th:text="${livro.genero}"></td>
+            <td> <a th:href="@{'/detalhesLivro/' + ${livro.idLivro}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+</body>
+</html>

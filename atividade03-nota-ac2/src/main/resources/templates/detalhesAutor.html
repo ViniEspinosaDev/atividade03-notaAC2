@@ -22,13 +22,9 @@
     <br><b>Nome: </b> <span th:text="${autor.nome}"></span>
     <br><b>CPF: </b> <span th:text="${autor.cpf}"></span>
     <br><b>Email: </b> <span th:text="${autor.email}"></span>
-    <br><b>Origem: </b> <span th:text="${autor.origem}"></span>
+    <br><b>origem: </b> <span th:text="${autor.origem}"></span>
     <br>
     <br>
-
-
-
-
 
     Livros:
     <table>
@@ -47,6 +43,28 @@
         </tr>
     </table>
     <br>
+
+    <form th:action="@{/salvarLivroAutor}" method="POST">
+
+        <label>Adicionar livro:</label>
+
+        <select th:field="${autor.livros}" required> 
+            <option value="">Novo autor</option>
+            <option th:each="livro : ${livros}"
+                        th:value="${livro.idLivro}"
+                        th:text="${livro.nome}">
+            </option>
+        </select>
+
+
+        <input type="submit" value="Salvar" />
+
+    </form>
+
+
+
+
+
 
 </body>
 </html>
