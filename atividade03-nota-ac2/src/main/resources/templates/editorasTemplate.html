@@ -34,12 +34,14 @@
             <th>Nome</th>
             <th>origem</th>
             <th>Detalhes</th>
+            <th>Editar</th>
         </tr>
         <tr th:each="editora : ${editoras}">
             <td th:text="${editora.idEditora}"></td>
             <td th:text="${editora.nome}"></td>
             <td th:text="${editora.origem}"></td>
             <td> <a th:href="@{'/detalhesEditora/' + ${editora.idEditora}}">Detalhes</a></td>
+            <td> <a th:href="@{'/editarEditora?idEditora=' + ${editora.idEditora}}">Editar</a></td>
         </tr>
     </table>
 </body>

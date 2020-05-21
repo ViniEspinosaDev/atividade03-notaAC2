@@ -49,12 +49,14 @@
             <th>Nome</th>
             <th>Genero</th>
             <th>Detalhes Livro</th>
+            <th>Editar Livro</th>
         </tr>
         <tr th:each="livro : ${livros}">
             <td th:text="${livro.idLivro}"></td>
             <td th:text="${livro.nome}"></td>
             <td th:text="${livro.genero}"></td>
             <td> <a th:href="@{'/detalhesLivro/' + ${livro.idLivro}}">Detalhes</a></td>
+            <td> <a th:href="@{'/editarLivro?idLivro=' + ${livro.idLivro}}">Editar</a></td>
         </tr>
     </table>
 </body>

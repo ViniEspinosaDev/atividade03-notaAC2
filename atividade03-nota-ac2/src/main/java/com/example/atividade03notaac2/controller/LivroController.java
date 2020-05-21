@@ -49,11 +49,9 @@ public class LivroController {
 
     @PostMapping("/associarAutorLivro")
     public String associarAutor(@ModelAttribute Autor autor, @RequestParam Integer idLivro) {
-        
 
         Livro livro = livroService.getLivroById(idLivro);
         autor = autorService.getAutorById(autor.getIdAutor());
-        
 
         livro.getAutores().add(autor);
         livroService.salvar(livro);
@@ -69,10 +67,33 @@ public class LivroController {
 
         mv.addObject("livro", livro);
 
-        List <Autor> autoresNaoAssociados = autorService.getAutores();
+        List<Autor> autoresNaoAssociados = autorService.getAutores();
         autoresNaoAssociados.removeAll(livro.getAutores());
 
         mv.addObject("autores", autoresNaoAssociados);
+
+        return mv;
+    }
+
+    @GetMapping("/removerLivro")
+    public String removerLivro(@RequestParam Integer idLivro) {
+
+        Livro livro = livroService.getLivroById(idLivro);
+        livroService.remover(livro);
+
+        return "redirect:/livros";
+    }
+
+    @GetMapping("/editarLivro")
+    public ModelAndView editarLivro(@ModelAttribute Livro livro, @RequestParam Integer idLivro) {
+
+        ModelAndView mv = new ModelAndView("livroEdit");
+
+        Livro livro1 = livroService.getLivroById(livro.getIdLivro());
+
+        mv.addObject("livro", livro1);
+        mv.addObject("editoras", editoraService.getEditoras());
+        mv.addObject("autores", autorService.getAutores());
 
         return mv;
     }
