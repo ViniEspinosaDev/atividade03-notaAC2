@@ -33,13 +33,17 @@
             <th>Autores</th>
             <th>Nome</th>
             <th>Email</th>
-            <th>Detalhes Livro</th>
+            <th>Detalhes</th>
+            <th>Editar</th>
+            <th>Remover</th>
         </tr>
         <tr th:each="autor : ${autores}">
             <td th:text="${autor.idAutor}"></td>
             <td th:text="${autor.nome}"></td>
             <td th:text="${autor.email}"></td>
             <td> <a th:href="@{'/detalhesAutor/' + ${autor.idAutor}}">Detalhes</a></td>
+            <td> <a th:href="@{'/editarAutor?idAutor=' + ${autor.idAutor}}">Editar</a></td>
+            <td> <a th:href="@{'/removerAutor?idAutor=' + ${autor.idAutor}}">Remover</a></td>
         </tr>
     </table>
 </body>

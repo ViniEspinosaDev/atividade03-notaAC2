@@ -76,10 +76,10 @@ public class LivroController {
     }
 
     @GetMapping("/removerLivro")
-    public String removerLivro(@RequestParam Integer idLivro) {
+    public String removerLivro(@ModelAttribute Livro livro, @RequestParam Integer idLivro) {
 
-        Livro livro = livroService.getLivroById(idLivro);
-        livroService.remover(livro);
+        Livro auxlivro = livroService.getLivroById(livro.getIdLivro());
+        livroService.remover(auxlivro);
 
         return "redirect:/livros";
     }

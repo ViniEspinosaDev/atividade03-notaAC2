@@ -72,4 +72,26 @@ public class AutorController {
 
         return mv;
     }
+
+    @GetMapping("/removerAutor")
+    public String removerAutor(@RequestParam Integer idAutor) {
+
+        Autor autor = autorService.getAutorById(idAutor);
+        autorService.remover(autor);
+
+        return "redirect:/autores";
+    }
+
+    @GetMapping("/editarAutor")
+    public ModelAndView editarAutor(@ModelAttribute Autor autor) {
+
+        ModelAndView mv = new ModelAndView("autorEdit");
+
+        Autor auxAutor = autorService.getAutorById(autor.getIdAutor());
+
+        mv.addObject("autor", auxAutor);
+
+        return mv;
+    }
+
 }
